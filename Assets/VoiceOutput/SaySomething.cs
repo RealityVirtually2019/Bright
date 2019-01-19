@@ -9,7 +9,7 @@ public class SaySomething : MonoBehaviour
   
     void Start()
     {
-        textToSpeech.StartSpeaking("Hello RealitzVirtually 2019 yeah");
+        textToSpeech.StartSpeaking("Welcome to Bright.");
     }
 
     // Update is called once per frame

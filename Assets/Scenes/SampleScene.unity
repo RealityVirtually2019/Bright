@@ -538,12 +538,16 @@ MonoBehaviour:
   PersistentKeywords: 0
   RecognizerStart: 0
   Keywords:
-  - Keyword: zoom
+  - Keyword: zoom in
     KeyCode: 122
   - Keyword: stop
     KeyCode: 115
-  - Keyword: faces
+  - Keyword: who's this
     KeyCode: 102
+  - Keyword: call for help
+    KeyCode: 99
+  - Keyword: enlarge
+    KeyCode: 101
   recognitionConfidenceLevel: 1
 --- !u!114 &958487008
 MonoBehaviour:
@@ -558,7 +562,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Keywords:
-  - Keyword: zoom
+  - Keyword: zoom in
     Response:
       m_PersistentCalls:
         m_Calls:
@@ -592,7 +596,7 @@ MonoBehaviour:
           m_CallState: 2
       m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
         Culture=neutral, PublicKeyToken=null
-  - Keyword: faces
+  - Keyword: who's this
     Response:
       m_PersistentCalls:
         m_Calls:
@@ -606,6 +610,40 @@ MonoBehaviour:
             m_FloatArgument: 0
             m_StringArgument: 28 year old male feeling happy
             m_BoolArgument: 0
+          m_CallState: 2
+      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+  - Keyword: call for help
+    Response:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1495940950}
+          m_MethodName: Call
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 28 year old male feeling happy
+            m_BoolArgument: 0
+          m_CallState: 2
+      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+  - Keyword: enlarge
+    Response:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 73172706}
+          m_MethodName: SetActive
+          m_Mode: 6
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 28 year old male feeling happy
+            m_BoolArgument: 1
           m_CallState: 2
       m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
         Culture=neutral, PublicKeyToken=null
@@ -742,7 +780,7 @@ GameObject:
   - component: {fileID: 1495940948}
   - component: {fileID: 1495940950}
   m_Layer: 0
-  m_Name: Twilio SMS
+  m_Name: Twilio
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
