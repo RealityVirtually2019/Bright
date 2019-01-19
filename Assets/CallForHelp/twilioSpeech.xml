@@ -1,0 +1,5 @@
+<Response>
+  <Say voice="alice">
+    Hello! This is an automated test call to notify you when an emergency could be occuring.
+  </Say>
+</Response>
