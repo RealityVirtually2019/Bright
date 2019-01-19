@@ -29,4 +29,8 @@ public class Zoom : MonoBehaviour {
         
         webcamTexture.Stop();
     }
+
+    public void Toggle() {
+        this.gameObject.SetActive(!this.gameObject.activeSelf);
+    }
 }
