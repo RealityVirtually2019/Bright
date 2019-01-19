@@ -12,7 +12,7 @@ public class Globals : MonoBehaviour
     public TextAsset credentialsFile;
 
     // Start is called before the first frame update
-    void Start() {
+    void OnEnable() {
         instance = this;
 
         if (!credentialsFile) {
