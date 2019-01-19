@@ -3,6 +3,7 @@
 using UnityEngine;
 using HoloToolkit.Unity.InputModule;
 using UnityEngine.UI;
+using UnityEngine.Windows.Speech;
 
 public class SpeechToText : MonoBehaviour, IDictationHandler
 {
@@ -39,6 +40,7 @@ public class SpeechToText : MonoBehaviour, IDictationHandler
   }
 
   public void StartListening () {
+    PhraseRecognitionSystem.Shutdown();
     isRecording = true;
     StartCoroutine(DictationInputManager.StartRecording(listener, initialSilenceTimeout, autoSilenceTimeout, recordingTime));
   }
@@ -48,7 +50,8 @@ public class SpeechToText : MonoBehaviour, IDictationHandler
   {
     isRecording = false;
     StartCoroutine(DictationInputManager.StopRecording());
-  }
+    PhraseRecognitionSystem.Restart();
+    }
 
   void IDictationHandler.OnDictationHypothesis(DictationEventData eventData)
   {
@@ -68,7 +71,9 @@ public class SpeechToText : MonoBehaviour, IDictationHandler
     speechToTextOutput = eventData.DictationResult;
     Debug.LogError(eventData.DictationResult);
     StartCoroutine(DictationInputManager.StopRecording());
-  }
+
+    PhraseRecognitionSystem.Restart();
+    }
 
   private void Update()
   {
