@@ -9,11 +9,13 @@ public class TwilioSMS : MonoBehaviour
   string service = "/Messages.json";
   public string from;
   public string to;
-  public string account_sid;
-  public string auth;
 
   public void SendSMS(string body)
   {
+    // Retrieve auth information from JSON
+    string account_sid = Globals.instance.credentials.twilio_account_sid;
+    string auth = Globals.instance.credentials.twilio_auth;
+
     WWWForm form = new WWWForm();
     form.AddField("To", to);
     form.AddField("From", from);
