@@ -9,22 +9,23 @@ public class PhotoCaptureHandler : MonoBehaviour
     WebCamTexture webcamTexture;
     PhotoCapture photoCapture = null;
 
-    void Start() {
-        Debug.Log("Initiating PhotoCapture");
+    //void Start() {
+    //    Debug.Log("Initiating PhotoCapture");
 
-        webcamTexture = new WebCamTexture();
-        Renderer renderer = GetComponent<Renderer>();
-        renderer.material.mainTexture = webcamTexture;
-        webcamTexture.Play();
-    }
+    //    webcamTexture = new WebCamTexture();
+    //    Renderer renderer = GetComponent<Renderer>();
+    //    renderer.material.mainTexture = webcamTexture;
+    //    webcamTexture.Play();
+    //}
 
-    void OnEnable() {
-        Debug.Log("Enabling PhotoCapture");
-        StartPhotoCapture();
-    }
+    //void OnEnable() {
+    //    Debug.Log("Enabling PhotoCapture");
+    //    StartPhotoCapture();
+    //}
 
     public void StartPhotoCapture()
     {
+        Debug.Log("Enabling PhotoCapture");
         //Create capture async
         PhotoCapture.CreateAsync(false, OnPhotoCaptureCreated);
     }
