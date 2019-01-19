@@ -542,6 +542,8 @@ MonoBehaviour:
     KeyCode: 122
   - Keyword: stop
     KeyCode: 115
+  - Keyword: faces
+    KeyCode: 102
   recognitionConfidenceLevel: 1
 --- !u!114 &958487008
 MonoBehaviour:
@@ -586,6 +588,23 @@ MonoBehaviour:
             m_IntArgument: 0
             m_FloatArgument: 0
             m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+  - Keyword: faces
+    Response:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 154070949}
+          m_MethodName: StartSpeaking
+          m_Mode: 5
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 28 year old male feeling happy
             m_BoolArgument: 0
           m_CallState: 2
       m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
