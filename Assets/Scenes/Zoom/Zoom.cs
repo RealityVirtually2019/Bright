@@ -3,10 +3,23 @@ using UnityEngine;
 using System.Collections;
 
 public class Zoom : MonoBehaviour {
+  WebCamTexture webcamTexture;
+
     void Start() {
-        WebCamTexture webcamTexture = new WebCamTexture();
+    }
+
+    void OnEnable() {
+        Debug.Log("Enabling Zoom");
+
+        webcamTexture = new WebCamTexture();
         Renderer renderer = GetComponent<Renderer>();
         renderer.material.mainTexture = webcamTexture;
         webcamTexture.Play();
+    }
+
+    void OnDisable() {
+        Debug.Log("Disabling Zoom");
+        
+        webcamTexture.Stop();
     }
 }
