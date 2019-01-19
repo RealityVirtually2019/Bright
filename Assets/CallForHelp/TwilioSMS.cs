@@ -12,7 +12,7 @@ public class TwilioSMS : MonoBehaviour
   public string account_sid;
   public string auth;
 
-  public void SendSMS(String body)
+  public void SendSMS(string body)
   {
     WWWForm form = new WWWForm();
     form.AddField("To", to);
