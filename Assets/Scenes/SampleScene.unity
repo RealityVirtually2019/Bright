@@ -555,10 +555,10 @@ MonoBehaviour:
     KeyCode: 99
   - Keyword: enlarge
     KeyCode: 101
-  - Keyword: subtitles
-    KeyCode: 116
   - Keyword: zoom out
     KeyCode: 111
+  - Keyword: read text
+    KeyCode: 116
   recognitionConfidenceLevel: 1
 --- !u!114 &958487008
 MonoBehaviour:
@@ -577,9 +577,9 @@ MonoBehaviour:
     Response:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 73172706}
-          m_MethodName: SetActive
-          m_Mode: 6
+        - m_Target: {fileID: 1222602722}
+          m_MethodName: tryZoomIn
+          m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
             m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -612,7 +612,7 @@ MonoBehaviour:
       m_PersistentCalls:
         m_Calls:
         - m_Target: {fileID: 1291166040}
-          m_MethodName: StartPhotoCapture
+          m_MethodName: DoFaceRecognition
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -658,12 +658,12 @@ MonoBehaviour:
           m_CallState: 2
       m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
         Culture=neutral, PublicKeyToken=null
-  - Keyword: subtitles
+  - Keyword: read text
     Response:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 1940066823}
-          m_MethodName: ToggleRecording
+        - m_Target: {fileID: 1291166040}
+          m_MethodName: DoOCR
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
