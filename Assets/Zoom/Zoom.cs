@@ -14,19 +14,23 @@ public class Zoom : MonoBehaviour {
         webcamTexture.Play();
     }
 
+    // zoom in
     void OnEnable() {
         Debug.Log("Enabling Zoom");
 
         if (webcamTexture && !webcamTexture.isPlaying)
         {
             webcamTexture.Play();
+        } else {
+            ZoomManager zm = new ZoomManager();
+            zm.tryZoomIn();
         }
-        
     }
 
+    // stop
     void OnDisable() {
         Debug.Log("Disabling Zoom");
-        
+
         webcamTexture.Stop();
     }
 
