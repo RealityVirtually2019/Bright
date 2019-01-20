@@ -54,6 +54,9 @@ public class ZoomManager : MonoBehaviour
         string msg = string.Format("Zoom is now at {0}%", (zoomFactor / zoomStep) * 25);
         Globals.instance.textToSpeech.StartSpeaking(msg);
 
+        string txtMsg = string.Format("Zoom: {0}%", (zoomFactor / zoomStep) * 25);
+        Globals.instance.textCycler.strings.Add(txtMsg);
+
         Debug.Log("At zoom:" + zoomObject.transform.localScale.ToString());
     }
 }
