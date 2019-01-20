@@ -102,7 +102,7 @@ public class PlayVoiceMessage : MonoBehaviour {
 
         if (faceObj.faces.Count > 0)
         {
-            IdentifyFaces(faceObj.faces);
+            StartCoroutine(IdentifyFaces(faceObj.faces));
 
             // foreach (Face face in faceObj.faces) {
             //     EmotionAttributes emotionAttributes = face.emotionAttributes;
