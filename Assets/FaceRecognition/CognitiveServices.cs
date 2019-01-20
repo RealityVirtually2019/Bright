@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -24,7 +24,7 @@ public class CognitiveServices : MonoBehaviour {
             JSONObject j = new JSONObject(www.text);
 
             if (j != null) {
-                SaveJsonToModel(j);
+                SaveJsonToFaceModel(j);
             }
         } else {
             Debug.Log("WWW Error: " + www.error + " Response: " + www.text);
@@ -33,7 +33,7 @@ public class CognitiveServices : MonoBehaviour {
         
     }
 
-    private void SaveJsonToModel(JSONObject j)
+    private void SaveJsonToFaceModel(JSONObject j)
     {
         FaceObject faceObj = new FaceObject();
         List<Face> faces = new List<Face>();
