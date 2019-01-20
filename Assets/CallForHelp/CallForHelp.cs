@@ -10,5 +10,7 @@ public class CallForHelp : MonoBehaviour
     public void Call()
     {
         twilio.MakeCall(onlineUrlToSpeechXML);
+
+        Globals.instance.textToSpeech.StartSpeaking("Starting emergency call!");
     }
 }
