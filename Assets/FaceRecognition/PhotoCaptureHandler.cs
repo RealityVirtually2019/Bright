@@ -122,6 +122,7 @@ public class PhotoCaptureHandler : MonoBehaviour
   // Public function to be called in order to trigger FaceRecognition
   public void DoFaceRecognition()
     {
+        Globals.instance.textToSpeech.StartSpeaking("Searching for Faces.");
         callbackFunction = ExecuteFaceTracking;
         StartPhotoCapture();
     }
@@ -135,6 +136,7 @@ public class PhotoCaptureHandler : MonoBehaviour
     // Public function to be called in order to trigger OCR
   public void DoOCR()
   {
+    Globals.instance.textToSpeech.StartSpeaking("Searching for Text.");
     callbackFunction = ExecuteOCR;
     StartPhotoCapture();
   }
