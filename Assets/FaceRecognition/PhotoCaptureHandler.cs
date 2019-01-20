@@ -23,7 +23,8 @@ public class PhotoCaptureHandler : MonoBehaviour
     //    StartPhotoCapture();
     //}
 
-    public void StartPhotoCapture()
+    // Don't call this directly; see functions below, which set the callback to call directly!
+    private void StartPhotoCapture()
     {
         Debug.Log("Enabling PhotoCapture");
         //Create capture async
@@ -32,6 +33,7 @@ public class PhotoCaptureHandler : MonoBehaviour
 
     void OnPhotoCaptureCreated(PhotoCapture captureObject)
     {
+        Debug.Log("OnPhotoCaptureCreated");
         photoCapture = captureObject;
 
         Resolution cameraResolution = PhotoCapture.SupportedResolutions.OrderByDescending((res) => res.width * res.height).First();
@@ -53,6 +55,7 @@ public class PhotoCaptureHandler : MonoBehaviour
 
     private void OnPhotoModeStarted(PhotoCapture.PhotoCaptureResult result)
     {
+        Debug.Log("OnPhotoModeStarted");
         /* Load to Memory */
         if (result.success)
         {
@@ -84,7 +87,7 @@ public class PhotoCaptureHandler : MonoBehaviour
         }
     }
 
-    void OnCapturedPhotoToMemory(PhotoCapture.PhotoCaptureResult result, PhotoCaptureFrame photoCaptureFrame)
+  void OnCapturedPhotoToMemory(PhotoCapture.PhotoCaptureResult result, PhotoCaptureFrame photoCaptureFrame)
     {
         if (result.success)
         {
@@ -97,7 +100,7 @@ public class PhotoCaptureHandler : MonoBehaviour
             Debug.Log("OnCapturedPhotoToMemory " + imageBufferList.Count);
 
             //Execute Face Coroutine
-            ExecuteMCSFace(imageBufferList, "detect");
+            ExecuteCallback(imageBufferList);
         }
         else
         {
@@ -107,12 +110,40 @@ public class PhotoCaptureHandler : MonoBehaviour
         photoCapture.StopPhotoModeAsync(OnStoppedPhotoMode);
     }
 
-    public void ExecuteMCSFace(List<byte> imageBufferList, string type)
+    private delegate void PhotoCallbackFunction(byte[] imageData);
+    PhotoCallbackFunction callbackFunction;
+    private void ExecuteCallback(List<byte> imageBufferList)
     {
         Debug.Log("Started PostToFaceAPI processing");
-        CognitiveServices cognitiveServices = new CognitiveServices();
-        StartCoroutine(cognitiveServices.PostToFace(imageBufferList.ToArray(), type));
+        callbackFunction(imageBufferList.ToArray());
         Debug.Log("Ended PostToFaceAPI processing coroutine");
     }
+
+  // Public function to be called in order to trigger FaceRecognition
+  public void DoFaceRecognition()
+    {
+        callbackFunction = ExecuteFaceTracking;
+        StartPhotoCapture();
+    }
+
+  // Internal Callback Function
+  private void ExecuteFaceTracking(byte[] imageData) {
+        CognitiveServices cognitiveServices = new CognitiveServices();
+        StartCoroutine(cognitiveServices.PostToFace(imageData));
+    }
+
+    // Public function to be called in order to trigger OCR
+  public void DoOCR()
+  {
+    callbackFunction = ExecuteOCR;
+    StartPhotoCapture();
+  }
+
+    // Internal Callback Function
+  private void ExecuteOCR(byte[] imageData)
+  {
+    CognitiveServices cognitiveServices = new CognitiveServices();
+    StartCoroutine(cognitiveServices.PostToFace(imageData));
+  }
 
 }
