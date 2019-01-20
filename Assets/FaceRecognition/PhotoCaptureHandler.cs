@@ -8,6 +8,7 @@ public class PhotoCaptureHandler : MonoBehaviour
 {
     WebCamTexture webcamTexture;
     PhotoCapture photoCapture = null;
+    public Zoom zoomScript;
 
     //void Start() {
     //    Debug.Log("Initiating PhotoCapture");
@@ -27,8 +28,15 @@ public class PhotoCaptureHandler : MonoBehaviour
     private void StartPhotoCapture()
     {
         Debug.Log("Enabling PhotoCapture");
-        //Create capture async
-        PhotoCapture.CreateAsync(false, OnPhotoCaptureCreated);
+
+        // Detect whether zoom is running, if so retrieve Texture from there
+        if (zoomScript.gameObject.activeInHierarchy) {
+            // Start callback with frame from webcamtexture
+            callbackFunction(zoomScript.getImageData());
+        } else {
+            //Create capture async
+            PhotoCapture.CreateAsync(false, OnPhotoCaptureCreated);
+        }
     }
 
     void OnPhotoCaptureCreated(PhotoCapture captureObject)
