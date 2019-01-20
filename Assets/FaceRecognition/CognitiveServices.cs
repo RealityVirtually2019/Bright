@@ -18,13 +18,19 @@ public class CognitiveServices : MonoBehaviour {
         WWW www = new WWW(url, imageData, headers);
         yield return www;
 
-        //Json Response
-        JSONObject j = new JSONObject(www.text);
+        if (www.error == null) {
+            Debug.Log("Cognitive, Response: " + www.text);
 
-        Debug.Log(j);
+            JSONObject j = new JSONObject(www.text);
 
-        if (j != null)
-            SaveJsonToModel(j);
+            if (j != null) {
+                SaveJsonToModel(j);
+            }
+        } else {
+            Debug.Log("WWW Error: " + www.error + " Response: " + www.text);
+        }
+
+        
     }
 
     private void SaveJsonToModel(JSONObject j)
