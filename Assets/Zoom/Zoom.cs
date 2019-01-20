@@ -21,9 +21,6 @@ public class Zoom : MonoBehaviour {
         if (webcamTexture && !webcamTexture.isPlaying)
         {
             webcamTexture.Play();
-        } else {
-            ZoomManager zm = new ZoomManager();
-            zm.tryZoomIn();
         }
     }
 
