@@ -16,18 +16,21 @@ public class TextCycler : MonoBehaviour
     public float displayTimePerItem = 4f;
 
     float t = 0;
+    bool empty = true;
     void Update()
     {
         t += Time.deltaTime;
-        if (t >= displayTimePerItem)
+        if (empty || t >= displayTimePerItem)
         {
             t = 0;
 
             if (strings.Count > 0) {
                 text.text = strings[0];
                 strings.RemoveAt(0);
+                empty = false;
             } else {
                 text.text = "";
+                empty = true;
             }
         }
     }
