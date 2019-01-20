@@ -27,6 +27,7 @@ public class PlayVoiceMessage : MonoBehaviour {
 
                 Dictionary<string, float> emotions = new Dictionary<string, float>
                 {
+                    { "neutral", emotionAttributes.neutral },
                     { "anger", emotionAttributes.anger },
                     { "contempt", emotionAttributes.contempt },
                     { "disgust", emotionAttributes.disgust },
@@ -36,7 +37,7 @@ public class PlayVoiceMessage : MonoBehaviour {
                     {"suprise", emotionAttributes.surprise }
                 };
 
-                emotionName = emotions.Keys.Max();
+                emotionName = emotions.Aggregate((x, y) => x.Value > y.Value ? x : y).Key;
 
                 //Message
                 message += string.Format("{0} looks {1} years old and feels {2}", face.faceAttributes.gender == 0 ? "He" : "She", face.faceAttributes.age,
