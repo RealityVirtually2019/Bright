@@ -99,32 +99,36 @@ public class PlayVoiceMessage : MonoBehaviour {
     {
         string message = string.Empty;
         string emotionName = string.Empty;
+        int numOfFaces = faceObj.faces.Count;
 
-        if (faceObj.faces.Count > 0)
+        if (numOfFaces > 0)
         {
-            StartCoroutine(IdentifyFaces(faceObj.faces));
+            // StartCoroutine(IdentifyFaces(faceObj.faces));
+            message += "There are {numOfFaces} people here.";
 
-            // foreach (Face face in faceObj.faces) {
-            //     EmotionAttributes emotionAttributes = face.emotionAttributes;
-            //
-            //     Dictionary<string, float> emotions = new Dictionary<string, float>
-            // {
-            //     { "neutral", emotionAttributes.neutral },
-            //     { "anger", emotionAttributes.anger },
-            //     { "contempt", emotionAttributes.contempt },
-            //     { "disgust", emotionAttributes.disgust },
-            //     { "fear", emotionAttributes.fear },
-            //     {"happiness", emotionAttributes.happiness },
-            //     {"sadness", emotionAttributes.sadness },
-            //     {"suprise", emotionAttributes.surprise }
-            // };
+            foreach (Face face in faceObj.faces) {
+                EmotionAttributes emotionAttributes = face.emotionAttributes;
 
-            //     emotionName = emotions.Aggregate((x, y) => x.Value > y.Value ? x : y).Key;
-            //
-            //     //Message
-            //     message += string.Format("{0} looks {1} years old and feels {2}", face.faceAttributes.gender == 0 ? "He" : "She", face.faceAttributes.age,
-            //     emotionName);
-            // }
+                Dictionary<string, float> emotions = new Dictionary<string, float>
+            {
+                { "neutral", emotionAttributes.neutral },
+                { "angry", emotionAttributes.anger },
+                { "argumentive", emotionAttributes.contempt },
+                { "disgusted", emotionAttributes.disgust },
+                { "scared", emotionAttributes.fear },
+                {"happy", emotionAttributes.happiness },
+                {"sad", emotionAttributes.sadness },
+                {"suprised", emotionAttributes.surprise }
+            };
+
+                emotionName = emotions.Aggregate((x, y) => x.Value > y.Value ? x : y).Key;
+
+                //Message
+                message += string.Format("A {0} year old {1} who is feeling {2}",
+                    face.faceAttributes.age,
+                    face.faceAttributes.gender == 0 ? "man" : "woman",
+                    emotionName);
+            }
         }
         else
             message = "I couldn't detect anyone.";
