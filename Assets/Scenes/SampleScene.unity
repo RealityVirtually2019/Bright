@@ -885,7 +885,7 @@ GameObject:
   - component: {fileID: 1291166040}
   - component: {fileID: 1291166039}
   m_Layer: 0
-  m_Name: FacialRecognition
+  m_Name: Computer Vision / Face Recognition
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
