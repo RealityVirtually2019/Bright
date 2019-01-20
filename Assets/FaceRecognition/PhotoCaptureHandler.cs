@@ -8,6 +8,7 @@ public class PhotoCaptureHandler : MonoBehaviour
 {
     WebCamTexture webcamTexture;
     PhotoCapture photoCapture = null;
+    public Zoom zoomScript;
 
     //void Start() {
     //    Debug.Log("Initiating PhotoCapture");
@@ -27,8 +28,15 @@ public class PhotoCaptureHandler : MonoBehaviour
     private void StartPhotoCapture()
     {
         Debug.Log("Enabling PhotoCapture");
-        //Create capture async
-        PhotoCapture.CreateAsync(false, OnPhotoCaptureCreated);
+
+        // Detect whether zoom is running, if so retrieve Texture from there
+        if (zoomScript.gameObject.activeInHierarchy) {
+            // Start callback with frame from webcamtexture
+            callbackFunction(zoomScript.getImageData());
+        } else {
+            //Create capture async
+            PhotoCapture.CreateAsync(false, OnPhotoCaptureCreated);
+        }
     }
 
     void OnPhotoCaptureCreated(PhotoCapture captureObject)
@@ -136,7 +144,7 @@ public class PhotoCaptureHandler : MonoBehaviour
     // Public function to be called in order to trigger OCR
   public void DoOCR()
   {
-    Globals.instance.textToSpeech.StartSpeaking("Searching for Text.");
+    Globals.instance.textToSpeech.StartSpeaking("Reading text.");
     callbackFunction = ExecuteOCR;
     StartPhotoCapture();
   }
@@ -145,7 +153,7 @@ public class PhotoCaptureHandler : MonoBehaviour
   private void ExecuteOCR(byte[] imageData)
   {
     CognitiveServices cognitiveServices = new CognitiveServices();
-    StartCoroutine(cognitiveServices.PostToFace(imageData));
+    StartCoroutine(cognitiveServices.PostToOCR(imageData));
   }
 
 }

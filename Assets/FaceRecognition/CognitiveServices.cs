@@ -139,6 +139,10 @@ public class CognitiveServices : MonoBehaviour {
 
         computerVisionOCR.text = string.Join(" ", wordList.ToArray());
 
-        Globals.instance.textToSpeech.StartSpeaking(computerVisionOCR.text);
+        if (wordList.Count > 0) {
+            Globals.instance.textToSpeech.StartSpeaking(computerVisionOCR.text);
+        } else {
+            Globals.instance.textToSpeech.StartSpeaking("I wasn't able to read anything");
+        }
   }
 }

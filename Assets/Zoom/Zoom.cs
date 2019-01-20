@@ -34,4 +34,15 @@ public class Zoom : MonoBehaviour {
     public void Toggle() {
         this.gameObject.SetActive(!this.gameObject.activeSelf);
     }
+
+    public byte[] getImageData() {
+        if (!webcamTexture.isPlaying) {
+            Debug.LogError("Trying to get Image while Webcamtexture is not running!");
+        }
+
+        Texture2D snap = new Texture2D(webcamTexture.width, webcamTexture.height);
+        snap.SetPixels(webcamTexture.GetPixels());
+        snap.Apply();
+        return ImageConversion.EncodeToPNG(snap);
+  }
 }

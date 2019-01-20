@@ -10,30 +10,50 @@ public class ZoomManager : MonoBehaviour
     private float maxZoomFactor = 2.0f;
     private float minZoomFactor = 0.5f;
     private float zoomFactor = .5f;
+    public float zoomStep = .5f;
+
+    private Vector3 baseScale;
+    void Start() {
+        baseScale = zoomObject.transform.localScale;
+    }
 
     public void tryZoomIn() {
         zoomPlane.SetActive(true);
 
-        if (zoomFactor <= maxZoomFactor) {
-            zoomFactor += 0.25F;
+        if (zoomFactor <= (maxZoomFactor - zoomStep)) {
+            Globals.instance.textToSpeech.StartSpeaking(string.Format("Zooming in"));
+            zoomFactor += zoomStep;
             ApplyZoom();
         } else {
             //can't zoom in more
+            Globals.instance.textToSpeech.StartSpeaking("Can't zoom in any more");
         }
     }
 
     public void zoomOut() {
-        if (zoomFactor >= minZoomFactor) {
-            zoomFactor -= 0.25F;
+        if (zoomFactor >= (minZoomFactor + zoomStep)) {
+            Globals.instance.textToSpeech.StartSpeaking("Zooming out");
+            zoomFactor -= zoomStep;
             ApplyZoom();
         } else {
             // stop camera when smaller than the start size
-            zoomPlane.SetActive(false);
+            StopZoom();
         }
     }
 
+    public void StopZoom()
+    {
+        Globals.instance.textToSpeech.StartSpeaking("Stopping Zoom");
+        zoomPlane.SetActive(false);
+    }
+
     private void ApplyZoom() {
-        Debug.Log("Applzing Zoom");
-        zoomObject.transform.localScale = Vector3.one * zoomFactor;
+        Debug.Log("Applzing Zoom" + zoomFactor);
+        zoomObject.transform.localScale = baseScale * zoomFactor;
+
+        string msg = string.Format("Zoom is now at {0}%", (zoomFactor / zoomStep) * 25);
+        Globals.instance.textToSpeech.StartSpeaking(msg);
+
+        Debug.Log("At zoom:" + zoomObject.transform.localScale.ToString());
     }
 }
