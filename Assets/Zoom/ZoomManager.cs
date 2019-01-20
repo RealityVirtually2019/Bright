@@ -7,25 +7,32 @@ public class ZoomManager : MonoBehaviour
     public GameObject zoomPlane;
     public GameObject zoomObject;
 
-    private Vector3 maxScale = new Vector3(2.0F, 2.0F, 2.0F);
-    private Vector3 minScale = new Vector3(0.0F, 0.0F, 0.0F);
+    private float maxZoomFactor = 2.0f;
+    private float minZoomFactor = 0.5f;
+    private float zoomFactor = 1.0f;
 
     public void tryZoomIn() {
         zoomPlane.SetActive(true);
 
-        if (zoomObject.transform.localScale != maxScale) {
-            zoomObject.transform.localScale += new Vector3(0.25F, 0.25F, 0.25F);
+        if (zoomFactor <= maxZoomFactor) {
+            zoomFactor += 0.25F;
+            ApplyZoom();
         } else {
             //can't zoom in more
         }
     }
 
     public void zoomOut() {
-        if (zoomObject.transform.localScale != minScale) {
-            zoomObject.transform.localScale -= new Vector3(0.25F, 0.25F, 0.25F);
+        if (zoomFactor >= minZoomFactor) {
+            zoomFactor -= 0.25F;
+            ApplyZoom();
         } else {
             // stop camera when smaller than the start size
             zoomPlane.SetActive(false);
         }
+    }
+
+    private void ApplyZoom() {
+        zoomObject.transform.localScale = Vector3.one * zoomFactor;
     }
 }
