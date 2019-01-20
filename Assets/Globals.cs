@@ -12,6 +12,7 @@ public class Globals : MonoBehaviour
     public Credentials credentials;
     public TextAsset credentialsFile;
     public TextToSpeech textToSpeech;
+    public TextCycler textCycler;
 
     // Start is called before the first frame update
     void OnEnable() {
