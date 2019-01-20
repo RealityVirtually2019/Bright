@@ -448,7 +448,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   text: {fileID: 274765265}
-  strings: []
+  strings:
+  - Welcome to Bright
   displayTimePerItem: 4
 --- !u!20 &485906188 stripped
 Camera:
