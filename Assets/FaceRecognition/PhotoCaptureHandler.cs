@@ -145,7 +145,7 @@ public class PhotoCaptureHandler : MonoBehaviour
   private void ExecuteOCR(byte[] imageData)
   {
     CognitiveServices cognitiveServices = new CognitiveServices();
-    StartCoroutine(cognitiveServices.PostToFace(imageData));
+    StartCoroutine(cognitiveServices.PostToOCR(imageData));
   }
 
 }
