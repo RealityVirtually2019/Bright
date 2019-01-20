@@ -8,7 +8,8 @@ public class CognitiveServices : MonoBehaviour {
         bool returnFaceId= true;
         string[] faceAttributes = new string[] { "age", "gender", "emotion" };
 
-        var url = string.Format("https://westus.api.cognitive.microsoft.com/face/v1.0/{0}?returnFaceId={1}&returnFaceAttributes={2}", "detect", returnFaceId, Converters.ConvertStringArrayToString(faceAttributes));
+        // var url = string.Format("https://westus.api.cognitive.microsoft.com/face/v1.0/{0}?returnFaceId={1}&returnFaceAttributes={2}", "detect", returnFaceId, Converters.ConvertStringArrayToString(faceAttributes));
+        var url = "https://westus.api.cognitive.microsoft.com/face/v1.0/detect";
         var headers = new Dictionary<string, string>() {
             { "Ocp-Apim-Subscription-Key", Constants.MCS_FACEKEY },
             { "Content-Type", "application/octet-stream" }
