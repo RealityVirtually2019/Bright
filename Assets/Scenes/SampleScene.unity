@@ -866,7 +866,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   zoomPlane: {fileID: 73172706}
-  zoomObject: {fileID: 1222602720}
+  zoomObject: {fileID: 73172706}
+  zoomStep: 0.5
 --- !u!4 &1239292801 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 140756637853625064, guid: b155cd85f1e62456f9943fce029df25f,
