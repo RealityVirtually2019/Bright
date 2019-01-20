@@ -142,7 +142,7 @@ public class CognitiveServices : MonoBehaviour {
         if (wordList.Count > 0) {
             Globals.instance.textToSpeech.StartSpeaking(computerVisionOCR.text);
 
-            Globals.instance.textCycler.strings.AddRange(wordList);
+            // Globals.instance.textCycler.strings.AddRange(wordList);
         } else {
             Globals.instance.textToSpeech.StartSpeaking("I wasn't able to read anything");
         }
