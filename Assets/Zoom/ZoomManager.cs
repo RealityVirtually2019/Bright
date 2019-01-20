@@ -11,6 +11,8 @@ public class ZoomManager : MonoBehaviour
     private Vector3 minScale = new Vector3(0.0F, 0.0F, 0.0F);
 
     public void tryZoomIn() {
+        zoomPlane.SetActive(true);
+
         if (zoomObject.transform.localScale != maxScale) {
             zoomObject.transform.localScale += new Vector3(0.25F, 0.25F, 0.25F);
         } else {
