@@ -15,31 +15,33 @@ public class PlayVoiceMessage : MonoBehaviour {
         Instance = this;
     }
 
-    public void PlayTextToSpeechMessage(FaceObject face)
+    public void PlayTextToSpeechMessage(FaceObject faceObj)
     {
         string message = string.Empty;
         string emotionName = string.Empty;
 
-        if (face.faces.Count > 0)
+        if (faceObj.faces.Count > 0)
         {
-            EmotionAttributes emotionAttributes = face.faces[0].emotionAttributes;
+            foreach (Face face in faceObj.faces) {
+                EmotionAttributes emotionAttributes = face.emotionAttributes;
 
-            Dictionary<string, float> emotions = new Dictionary<string, float>
-            {
-                { "anger", emotionAttributes.anger },
-                { "contempt", emotionAttributes.contempt },
-                { "disgust", emotionAttributes.disgust },
-                { "fear", emotionAttributes.fear },
-                {"happiness", emotionAttributes.happiness },
-                {"sadness", emotionAttributes.sadness },
-                {"suprise", emotionAttributes.surprise }
-            };
+                Dictionary<string, float> emotions = new Dictionary<string, float>
+                {
+                    { "anger", emotionAttributes.anger },
+                    { "contempt", emotionAttributes.contempt },
+                    { "disgust", emotionAttributes.disgust },
+                    { "fear", emotionAttributes.fear },
+                    {"happiness", emotionAttributes.happiness },
+                    {"sadness", emotionAttributes.sadness },
+                    {"suprise", emotionAttributes.surprise }
+                };
 
-            emotionName = emotions.Keys.Max();
+                emotionName = emotions.Keys.Max();
 
-            //Message
-            message = string.Format("{0} looks {1} years old and feels {2}", face.faces[0].faceAttributes.gender == 0 ? "He" : "She", face.faces[0].faceAttributes.age,
-            emotionName);
+                //Message
+                message += string.Format("{0} looks {1} years old and feels {2}", face.faceAttributes.gender == 0 ? "He" : "She", face.faceAttributes.age,
+                emotionName);
+            }
         }
         else
             message = "I could't detect anyone.";
