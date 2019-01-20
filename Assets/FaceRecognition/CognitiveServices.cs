@@ -24,10 +24,10 @@ public class CognitiveServices : MonoBehaviour {
         Debug.Log(j);
 
         if (j != null)
-            SaveJsonToModel(j);
+            SaveJsonToFaceModel(j);
     }
 
-    private void SaveJsonToModel(JSONObject j)
+    private void SaveJsonToFaceModel(JSONObject j)
     {
         FaceObject faceObj = new FaceObject();
         List<Face> faces = new List<Face>();
