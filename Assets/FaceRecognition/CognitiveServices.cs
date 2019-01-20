@@ -26,6 +26,7 @@ public class CognitiveServices : MonoBehaviour {
                 SaveJsonToFaceModel(j);
             }
         } else {
+            Globals.instance.textToSpeech.StartSpeaking(string.Format("Error in scanning faces."));
             Debug.Log("WWW Error: " + www.error + " Response: " + www.text);
         }
     }
