@@ -104,7 +104,7 @@ public class PlayVoiceMessage : MonoBehaviour {
         if (numOfFaces > 0)
         {
             // StartCoroutine(IdentifyFaces(faceObj.faces));
-            message += "There are {numOfFaces} people here.";
+            message += "There are " + numOfFaces + " people here.";
 
             foreach (Face face in faceObj.faces) {
                 EmotionAttributes emotionAttributes = face.emotionAttributes;
