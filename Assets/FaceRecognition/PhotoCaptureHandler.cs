@@ -136,7 +136,7 @@ public class PhotoCaptureHandler : MonoBehaviour
     // Public function to be called in order to trigger OCR
   public void DoOCR()
   {
-    Globals.instance.textToSpeech.StartSpeaking("Searching for Text.");
+    Globals.instance.textToSpeech.StartSpeaking("Reading text.");
     callbackFunction = ExecuteOCR;
     StartPhotoCapture();
   }
