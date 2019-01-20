@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class CognitiveServices : MonoBehaviour {
-
     public IEnumerator<object> PostToFace(byte[] imageData) {
         //Parameters
         bool returnFaceId= true;
@@ -141,6 +140,8 @@ public class CognitiveServices : MonoBehaviour {
 
         if (wordList.Count > 0) {
             Globals.instance.textToSpeech.StartSpeaking(computerVisionOCR.text);
+
+            Globals.instance.textCycler.strings.AddRange(wordList);
         } else {
             Globals.instance.textToSpeech.StartSpeaking("I wasn't able to read anything");
         }
