@@ -74,26 +74,26 @@ public class PlayVoiceMessage : MonoBehaviour {
     /// <summary>
     /// Spawns cursor for the Main Camera
     /// </summary>
-    private void CreateLabel()
-    {
-        // Create a sphere as new cursor
-        GameObject newLabel = new GameObject();
-
-        // Attach the label to the Main Camera
-        newLabel.transform.parent = gameObject.transform;
-
-        // Resize and position the new cursor
-        newLabel.transform.localScale = new Vector3(0.4f, 0.4f, 0.4f);
-        newLabel.transform.position = new Vector3(0f, 3f, 60f);
-
-        // Creating the text of the Label
-        labelText = newLabel.AddComponent<TextMesh>();
-        labelText.anchor = TextAnchor.MiddleCenter;
-        labelText.alignment = TextAlignment.Center;
-        labelText.tabSize = 4;
-        labelText.fontSize = 50;
-        labelText.text = ".";
-    }
+    // private void CreateLabel()
+    // {
+    //     // Create a sphere as new cursor
+    //     GameObject newLabel = new GameObject();
+    //
+    //     // Attach the label to the Main Camera
+    //     newLabel.transform.parent = gameObject.transform;
+    //
+    //     // Resize and position the new cursor
+    //     newLabel.transform.localScale = new Vector3(0.4f, 0.4f, 0.4f);
+    //     newLabel.transform.position = new Vector3(0f, 3f, 60f);
+    //
+    //     // Creating the text of the Label
+    //     labelText = newLabel.AddComponent<TextMesh>();
+    //     labelText.anchor = TextAnchor.MiddleCenter;
+    //     labelText.alignment = TextAlignment.Center;
+    //     labelText.tabSize = 4;
+    //     labelText.fontSize = 50;
+    //     labelText.text = ".";
+    // }
 
     public void PlayTextToSpeechMessage(FaceObject faceObj)
     {
