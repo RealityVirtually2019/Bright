@@ -9,7 +9,7 @@ public class ZoomManager : MonoBehaviour
 
     private float maxZoomFactor = 2.0f;
     private float minZoomFactor = 0.5f;
-    private float zoomFactor = 1.0f;
+    private float zoomFactor = .5f;
 
     public void tryZoomIn() {
         zoomPlane.SetActive(true);
@@ -33,6 +33,7 @@ public class ZoomManager : MonoBehaviour
     }
 
     private void ApplyZoom() {
+        Debug.Log("Applzing Zoom");
         zoomObject.transform.localScale = Vector3.one * zoomFactor;
     }
 }
