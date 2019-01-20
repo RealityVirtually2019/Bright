@@ -173,7 +173,7 @@ public class PlayVoiceMessage : MonoBehaviour {
             yield return www.SendWebRequest();
             string jsonResponse = www.downloadHandler.text;
             Debug.Log($"Get Person - jsonResponse: {jsonResponse}");
-            Candidate_RootObject [] candidate_RootObject = JsonConvert.DeserializeObject<Candidate_RootObject[]>(jsonResponse);
+            Candidate_RootObject[] candidate_RootObject = JsonConvert.DeserializeObject<Candidate_RootObject[]>(jsonResponse);
 
             // For each face to identify that ahs been submitted, display its candidate
             foreach (Candidate_RootObject candidateRO in candidate_RootObject)
