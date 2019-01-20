@@ -15,7 +15,7 @@ public class ZoomManager : MonoBehaviour
     public void tryZoomIn() {
         zoomPlane.SetActive(true);
 
-        if (zoomFactor <= maxZoomFactor) {
+        if (zoomFactor <= (maxZoomFactor - zoomStep)) {
             Globals.instance.textToSpeech.StartSpeaking("Zooming in");
             zoomFactor += zoomStep;
             ApplyZoom();
@@ -26,7 +26,7 @@ public class ZoomManager : MonoBehaviour
     }
 
     public void zoomOut() {
-        if (zoomFactor >= minZoomFactor) {
+        if (zoomFactor >= (minZoomFactor + zoomStep)) {
             Globals.instance.textToSpeech.StartSpeaking("Zooming out");
             zoomFactor -= zoomStep;
             ApplyZoom();
@@ -43,7 +43,9 @@ public class ZoomManager : MonoBehaviour
     }
 
     private void ApplyZoom() {
-        Debug.Log("Applzing Zoom");
+        Debug.Log("Applzing Zoom" + zoomFactor);
         zoomObject.transform.localScale = Vector3.one * zoomFactor;
+
+        Debug.Log("At zoom:" + zoomObject.transform.localScale.ToString());
     }
 }
