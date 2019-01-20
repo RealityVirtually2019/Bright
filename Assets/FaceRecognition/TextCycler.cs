@@ -1,7 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class TextCycler : MonoBehaviour
 {
@@ -11,7 +10,7 @@ public class TextCycler : MonoBehaviour
         
     }
 
-    public Text text;
+    public TextMesh text;
     public List<string> strings;
     public float displayTimePerItem = 4f;
 
