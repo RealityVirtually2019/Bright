@@ -974,6 +974,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   credentialsFile: {fileID: 4900000, guid: 28d7f1c7edf93498490e38b693c18445, type: 3}
+  textToSpeech: {fileID: 154070949}
 --- !u!4 &1621348000
 Transform:
   m_ObjectHideFlags: 0

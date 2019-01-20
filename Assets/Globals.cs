@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using HoloToolkit.Unity;
 
 // Singleton to hold global variables
 public class Globals : MonoBehaviour
@@ -10,6 +11,7 @@ public class Globals : MonoBehaviour
     [System.NonSerialized]
     public Credentials credentials;
     public TextAsset credentialsFile;
+    public TextToSpeech textToSpeech;
 
     // Start is called before the first frame update
     void OnEnable() {
